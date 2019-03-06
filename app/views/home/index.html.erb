@@ -9,7 +9,7 @@
 			<th><strong> Department </strong></th>
 		</tr>
 		<% @employees.each do |employee| %>
-			<tr>
+			<tr onclick="location.href='<%= employee_path(employee) %>'">
 				<td> <%= employee.name %> </td>
 				<td> <%= employee.role %> </td>
 				<td> <%= employee.department %> </td>

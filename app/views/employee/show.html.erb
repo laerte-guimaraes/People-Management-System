@@ -1,0 +1,31 @@
+<h2> Employee Information </h2>
+<div class="employee-name">
+	<label> Name: </label>
+	<%= @employee.name %>
+</div>
+<div class="employee-summary">
+	<label> Summary: </label>
+	<%= @employee.summary %>
+</div>
+<div class="employee-admission">
+	<label> Admission Date: </label>
+	<%= @employee.admission_date.strftime("%d/%m/%Y") %>
+</div>
+<div class="employee-role">
+	<label> Role: </label>
+	<%= @employee.role %>
+</div>
+<div class="employee-department">
+	<label> Department: </label>
+	<%= @employee.department %>
+</div>
+<div class="employee-company">
+	<label> Company: </label>
+	<%= @employee.company %>
+</div>
+<div class="employee-description">
+	<label> Description: </label>
+	<%= @employee.description %>
+</div>
+
+<%= link_to 'Back', root_path %>

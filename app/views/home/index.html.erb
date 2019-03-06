@@ -1,1 +1,19 @@
 <h1> People Management System </h1>
+
+<h2> Employees </h2>
+<div class="employee-group">
+	<table style="width: 50%; text-align: center;">
+		<tr>
+			<th><strong> Name </strong></th>
+			<th><strong> Role </strong></th>
+			<th><strong> Department </strong></th>
+		</tr>
+		<% @employees.each do |employee| %>
+			<tr>
+				<td> <%= employee.name %> </td>
+				<td> <%= employee.role %> </td>
+				<td> <%= employee.department %> </td>
+			</tr>
+		<% end %>
+	</table>
+</div>

@@ -38,4 +38,22 @@ feature 'User register employee' do
     expect(page).to have_css('div.employee-admission', text: employee[:admission_date])
     expect(page).to have_css('div.employee-description', text: employee[:description])
   end
+
+
+  scenario 'and must fill in all fields' do
+    # simula a ação do usuário
+    visit root_path
+    click_on 'Add Employee'
+
+    fill_in 'Name', with: ''
+    fill_in 'Summary', with: ''
+    fill_in 'Admission Date', with:  ''
+    fill_in 'Role', with:  ''
+    fill_in 'Department', with:  ''
+    fill_in 'Company', with:  ''
+    fill_in 'Description', with:  ''
+    click_on 'Create'
+
+    expect(page).to have_content('You need to fill in the fields !')
+  end
 end

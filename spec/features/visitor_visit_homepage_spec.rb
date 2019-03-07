@@ -1,5 +1,17 @@
 require 'rails_helper'
 
+def create_employee(name = 'João', role = 'Desenvolvedor', department = 'Tecnologia')
+  Employee.create(
+    name: name,
+    role: role,
+    department: department,
+    admission_date: DateTime.now,
+    company: 'Empresa de Desenvolvimento',
+    summary: 'Atua diretamente com a equipe de desenvolvimento de software',
+    description: 'Simpático, Extrovertido, Disposto a aprender novas tecnologias'
+    )
+end
+
 feature 'Visitor visit homepage' do
   scenario 'successfully' do
     visit root_path
@@ -9,14 +21,7 @@ feature 'Visitor visit homepage' do
 
   scenario 'and view employee' do
     #cria os dados necessários
-    employee = Employee.create(
-      name: 'João',
-      role: 'Desenvolvedor',
-      department: 'Tecnologia',
-      admission_date: DateTime.now,
-      company: 'Empresa de Desenvolvimento'
-      )
-
+    employee = create_employee
     # simula a ação do usuário
     visit root_path
 
@@ -28,21 +33,8 @@ feature 'Visitor visit homepage' do
 
   scenario 'and view employees list' do
     #cria os dados necessários
-    employee = Employee.create(
-      name: 'João',
-      role: 'Desenvolvedor',
-      department: 'Tecnologia',
-      admission_date: DateTime.now,
-      company: 'Empresa de Desenvolvimento'
-      )
-
-    another_employee = Employee.create(
-      name: 'Rafael',
-      role: 'Analista Financeiro',
-      department: 'Financeiro',
-      admission_date: DateTime.now,
-      company: 'Empresa de Desenvolvimento'
-      )
+    employee = create_employee
+    another_employee = create_employee('Rafael', 'Analista Financeiro', 'Financeiro')
 
     # simula a ação do usuário
     visit root_path

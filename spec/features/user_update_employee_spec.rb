@@ -17,6 +17,7 @@ feature 'User update recipe' do
     fill_in 'Name', with: 'Maria'
     click_on 'Update'
 
+    expect(current_path).to eq(employee_path(employee))
     expect(page).to have_css('h2', text: 'Employee Information')
     expect(page).to have_css('div.employee-name', text: 'Maria')
     expect(page).not_to have_css('div.employee-name', text: 'João')

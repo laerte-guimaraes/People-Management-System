@@ -1,4 +1,4 @@
-<% action = params[:action] == 'edit'? 'update' : 'create' %>
+<% action = params[:action] == 'new' || params[:action] == 'create' ? 'create' : 'update' %>
 
 <%= form_for @employee, url: {action: action} do |f| %>
   <%= f.label :name, 'Name: ' %>

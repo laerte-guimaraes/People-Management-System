@@ -1,3 +1,10 @@
 <h1> Employee Editing </h1>
 
+<% if @employee.errors.full_messages.present? %>
+  <p><strong> You need to fill in the fields !</strong></p>
+  <% @employee.errors.full_messages.each do |message| %>
+   <p> <%= message %> </p>
+  <% end %>
+<% end%>
+
 <%= render partial: 'form' %>

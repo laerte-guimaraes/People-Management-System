@@ -9,8 +9,8 @@
 		<%= f.text_field :summary %> <br />
   <%= f.label :role, 'Role: ' %>
 		<%= f.text_field :role %> <br />
-  <%= f.label :department, 'Department: ' %>
-		<%= f.text_field :department %> <br />
+  <%= f.label :department_id, 'Department: ' %>
+    <%= f.collection_select(:department_id, Department.all, :id, :name) %> <br />
   <%= f.label :admission_date, 'Admission Date: ' %>
 		<%= f.text_field :admission_date, placeholder: "dd/mm/yyy" %> <br />
   <%= f.label :description, 'Description: ' %>

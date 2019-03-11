@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-def create_employee(name = 'João', role = 'Desenvolvedor', department = 'Tecnologia')
+def create_employee(name = 'João', role = 'Desenvolvedor', department_name = 'Tecnologia')
+  department = Department.create(name: department_name)
   Employee.create(
     name: name,
     role: role,
@@ -28,7 +29,7 @@ feature 'Visitor visit homepage' do
     # expectativas do usuário após a ação
     expect(page).to have_css('td', text: employee.name)
     expect(page).to have_css('td', text: employee.role)
-    expect(page).to have_css('td', text: employee.department)
+    expect(page).to have_css('td', text: employee.department.name)
   end
 
   scenario 'and view employees list' do
@@ -42,10 +43,10 @@ feature 'Visitor visit homepage' do
     # expectativas do usuário após a ação
     expect(page).to have_css('td', text: employee.name)
     expect(page).to have_css('td', text: employee.role)
-    expect(page).to have_css('td', text: employee.department)
+    expect(page).to have_css('td', text: employee.department.name)
 
     expect(page).to have_css('td', text: another_employee.name)
     expect(page).to have_css('td', text: another_employee.role)
-    expect(page).to have_css('td', text: another_employee.department)
+    expect(page).to have_css('td', text: another_employee.department.name)
   end
 end

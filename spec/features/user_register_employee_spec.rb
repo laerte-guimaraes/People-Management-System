@@ -13,6 +13,11 @@ def employee
 end
 
 feature 'User register employee' do
+  before do
+    Department.delete_all
+    Department.create(name: employee[:department])
+  end
+
   scenario 'successfully' do
     #cria os dados necessários, nesse caso não vamos criar dados no banco
 
@@ -23,7 +28,7 @@ feature 'User register employee' do
     fill_in 'Summary', with: employee[:summary]
     fill_in 'Admission Date', with: employee[:admission_date]
     fill_in 'Role', with: employee[:role]
-    fill_in 'Department', with: employee[:department]
+    select employee[:department], from: 'Department'
     fill_in 'Company', with: employee[:company]
     fill_in 'Description', with: employee[:description]
     click_on 'Create'
@@ -49,7 +54,7 @@ feature 'User register employee' do
     fill_in 'Summary', with: ''
     fill_in 'Admission Date', with:  ''
     fill_in 'Role', with:  ''
-    fill_in 'Department', with:  ''
+    select employee[:department], from: 'Department'
     fill_in 'Company', with:  ''
     fill_in 'Description', with:  ''
     click_on 'Create'

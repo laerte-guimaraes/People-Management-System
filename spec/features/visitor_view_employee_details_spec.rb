@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 def create_employee
-    #cria os dados necessários
-    employee = Employee.create(
-      name: 'João',
-      role: 'Desenvolvedor',
-      department: 'Tecnologia',
-      admission_date: DateTime.now,
-      company: 'Empresa de Desenvolvimento',
-      summary: 'Atua diretamente com a equipe de desenvolvimento de software',
-      description: 'Simpático, Extrovertido, Disposto a aprender novas tecnologias'
-      )
+  department = Department.create(name: 'Tecnologia')
+  Employee.create(
+    name: 'João',
+    role: 'Desenvolvedor',
+    department: department,
+    admission_date: DateTime.now,
+    company: 'Empresa de Desenvolvimento',
+    summary: 'Atua diretamente com a equipe de desenvolvimento de software',
+    description: 'Simpático, Extrovertido, Disposto a aprender novas tecnologias'
+    )
 end
 
 feature 'Visitor view employee details' do
@@ -27,7 +27,7 @@ feature 'Visitor view employee details' do
     expect(page).to have_css('div.employee-company', text: employee.company)
     expect(page).to have_css('div.employee-summary', text: employee.summary)
     expect(page).to have_css('div.employee-role', text: employee.role)
-    expect(page).to have_css('div.employee-department', text: employee.department)
+    expect(page).to have_css('div.employee-department', text: employee.department.name)
     expect(page).to have_css('div.employee-admission', text: employee.admission_date.strftime("%d/%m/%Y"))
     expect(page).to have_css('div.employee-company', text: employee.company)
     expect(page).to have_css('div.employee-description', text: employee.description)

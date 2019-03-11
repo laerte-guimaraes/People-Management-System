@@ -1,10 +1,12 @@
 class Employee < ApplicationRecord
 
+	belongs_to :department
+
 	validates :name,
 		:company,
 		:summary,
 		:role,
-		:department,
+		:department_id,
 		:admission_date,
 		:description,
 		presence: true

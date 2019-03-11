@@ -15,7 +15,7 @@
 			<tr onclick="location.href='<%= employee_path(employee) %>'">
 				<td> <%= employee.name %> </td>
 				<td> <%= employee.role %> </td>
-				<td> <%= employee.department %> </td>
+				<td> <%= employee.department.name %> </td>
 			</tr>
 		<% end %>
 	</table>

@@ -1,0 +1,10 @@
+<h1> Departments Registration </h1>
+
+<% if @department.errors.full_messages.present? %>
+  <p><strong> You need to fill in the fields !</strong></p>
+  <% @department.errors.full_messages.each do |message| %>
+   <p> <%= message %> </p>
+  <% end %>
+<% end%>
+
+<%= render partial: 'form' %>

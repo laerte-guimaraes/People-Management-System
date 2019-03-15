@@ -1,0 +1,7 @@
+<% action = params[:action] == 'new' || params[:action] == 'create' ? 'create' : 'update' %>
+
+<%= form_for @department, url: {action: action} do |f| %>
+  <%= f.label :name, 'Name: ' %>
+  	<%= f.text_field :name %> <br />
+  <%= f.submit action.camelize %>
+<% end %>
